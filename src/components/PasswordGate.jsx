@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 
 function PasswordGate({ project, onSuccess }) {
@@ -6,32 +7,24 @@ function PasswordGate({ project, onSuccess }) {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+    if (isSubmitting) return;
 
-  if (isSubmitting) return;
+    setIsSubmitting(true);
+    setError("");
 
-  setIsSubmitting(true);
-  setError("");
-
-  try {
-    if (password !== project.password) {
-      setError("Пароль не подошёл. Попробуйте ещё раз.");
-      setPassword("");
+    if (password === project.password) {
+      onSuccess();
+      setIsSubmitting(false);
       return;
     }
 
-    onSuccess();
-  } catch (error) {
-    console.error("Ошибка открытия проекта:", error);
-    setError("Не удалось открыть проект.");
-  } finally {
+    setError("Пароль не подошёл. Попробуйте ещё раз.");
+    setPassword("");
     setIsSubmitting(false);
-  }
-};
-
-
+  };
 
   return (
     <div className="password-gate">
@@ -121,7 +114,10 @@ const handleSubmit = async (event) => {
               required
             />
 
-            <span className="password-gate__input-mark" aria-hidden="true">
+            <span
+              className="password-gate__input-mark"
+              aria-hidden="true"
+            >
               ↗
             </span>
           </div>

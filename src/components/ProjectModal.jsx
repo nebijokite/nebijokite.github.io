@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import PasswordGate from "./PasswordGate";
 
 function ProjectModal({ project, onClose }) {
+  const [unlocked, setUnlocked] = useState(false);
+
   useEffect(() => {
     if (!project) return;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -31,7 +32,6 @@ function ProjectModal({ project, onClose }) {
               {section.title}
             </h3>
           )}
-
           {section.content && (
             <div className="project-modal__section-text">
               {section.content}
@@ -71,7 +71,6 @@ function ProjectModal({ project, onClose }) {
                 alt={image.alt || ""}
                 className="project-modal__image"
               />
-
               {image.caption && (
                 <figcaption className="project-modal__caption">
                   {image.caption}
@@ -86,6 +85,8 @@ function ProjectModal({ project, onClose }) {
     return null;
   };
 
+  const showProtectedContent = !project.protected || unlocked;
+
   return (
     <div
       className="project-modal"
@@ -93,9 +94,7 @@ function ProjectModal({ project, onClose }) {
       aria-modal="true"
       aria-labelledby="project-modal-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose();
-        }
+        if (event.target === event.currentTarget) onClose();
       }}
     >
       <div className="project-modal__window">
@@ -124,10 +123,12 @@ function ProjectModal({ project, onClose }) {
               )}
             </header>
 
-            {project.protected ? (
+            {!showProtectedContent ? (
               <PasswordGate
                 project={project}
-                onSuccess={() => {}}
+                onSuccess={() => {
+                  setUnlocked(true)}
+                }
               />
             ) : (
               <>
@@ -183,3 +184,4 @@ function ProjectModal({ project, onClose }) {
 }
 
 export default ProjectModal;
+
