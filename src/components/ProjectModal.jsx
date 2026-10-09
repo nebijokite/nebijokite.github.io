@@ -9,9 +9,7 @@ function ProjectModal({ project, onClose }) {
     if (!project) return;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -28,27 +26,56 @@ function ProjectModal({ project, onClose }) {
   const renderSection = (section, index) => {
     if (section.type === "text") {
       return (
-        <section className="modal-section" key={index}>
-          {section.title && <h3>{section.title}</h3>}
-          <p>{section.content}</p>
+        <section className="project-modal__section" key={`text-${index}`}>
+          {section.title && (
+            <h3 className="project-modal__section-title">
+              {section.title}
+            </h3>
+          )}
+          {section.content && (
+            <div className="project-modal__section-text">
+              {section.content}
+            </div>
+          )}
         </section>
       );
     }
 
     if (section.type === "image") {
       return (
-        <figure className="modal-image" key={index}>
-          <img src={section.src} alt={section.alt || ""} />
+        <figure className="project-modal__image-block" key={`image-${index}`}>
+          <img
+            src={section.src}
+            alt={section.alt || ""}
+            className="project-modal__image"
+          />
+          {section.caption && (
+            <figcaption className="project-modal__caption">
+              {section.caption}
+            </figcaption>
+          )}
         </figure>
       );
     }
 
     if (section.type === "images") {
       return (
-        <div className="modal-images" key={index}>
+        <div className="project-modal__images" key={`images-${index}`}>
           {section.items?.map((image, imageIndex) => (
-            <figure key={imageIndex}>
-              <img src={image.src} alt={image.alt || ""} />
+            <figure
+              className="project-modal__image-block"
+              key={`${image.src}-${imageIndex}`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt || ""}
+                className="project-modal__image"
+              />
+              {image.caption && (
+                <figcaption className="project-modal__caption">
+                  {image.caption}
+                </figcaption>
+              )}
             </figure>
           ))}
         </div>
@@ -62,88 +89,94 @@ function ProjectModal({ project, onClose }) {
 
   return (
     <div
-      className="project-modal-overlay"
-      onClick={onClose}
-      role="presentation"
+      className="project-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
     >
-      <div
-        className="project-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label={project.title}
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="project-modal-header">
-          <span className="project-modal-category">
-            {project.category}
-          </span>
+      <div className="project-modal__window">
+        <button
+          className="project-modal__close"
+          type="button"
+          onClick={onClose}
+          aria-label="Закрыть проект"
+        >
+          ×
+        </button>
 
-          <button
-            type="button"
-            className="project-modal-close"
-            onClick={onClose}
-            aria-label="Закрыть проект"
-          >
-            ×
-          </button>
-        </div>
-
-        <div className="project-modal-content">
-          <div className="project-modal-title">
-            <h2>{project.title}</h2>
-            <span>{project.year}</span>
-          </div>
-
-          {!showProtectedContent ? (
-            <PasswordGate
-              project={project}
-              onSuccess={() => setUnlocked(true)}
-            />
-          ) : (
-            <>
-              {project.description && (
-                <p className="project-modal-description">
-                  {project.description}
-                </p>
-              )}
-
-              <div className="project-modal-details">
-                {project.about && (
-                  <div className="project-modal-detail">
-                    <h3>О проекте</h3>
-                    <p>{project.about}</p>
-                  </div>
-                )}
-
-                {project.role && (
-                  <div className="project-modal-detail">
-                    <h3>Роль</h3>
-                    <p>{project.role}</p>
-                  </div>
-                )}
-
-                {project.responsibilities && (
-                  <div className="project-modal-detail">
-                    <h3>Задачи</h3>
-                    <p>{project.responsibilities}</p>
-                  </div>
-                )}
-
-                {project.platforms && (
-                  <div className="project-modal-detail">
-                    <h3>Платформы</h3>
-                    <p>{project.platforms}</p>
-                  </div>
-                )}
+        <div className="project-modal__scroll">
+          <div className="project-modal__content">
+            <header className="project-modal__header">
+              <div className="project-modal__eyebrow">
+                {project.category}
               </div>
 
-              {project.sections?.length > 0 && (
-                <div className="project-modal-sections">
-                  {project.sections.map(renderSection)}
+              <h2 id="project-modal-title">{project.title}</h2>
+
+              {project.type && (
+                <div className="project-modal__type">
+                  {project.type}
                 </div>
               )}
-            </>
-          )}
+            </header>
+
+            {!showProtectedContent ? (
+              <PasswordGate
+                project={project}
+                onSuccess={() => {
+                  setUnlocked(true)}
+                }
+              />
+            ) : (
+              <>
+                <div className="project-modal__details">
+                  {project.about && (
+                    <div className="project-modal__detail">
+                      <span>О проекте</span>
+                      <p>{project.about}</p>
+                    </div>
+                  )}
+
+                  {project.year && (
+                    <div className="project-modal__detail">
+                      <span>Год</span>
+                      <p>{project.year}</p>
+                    </div>
+                  )}
+
+                  {project.role && (
+                    <div className="project-modal__detail">
+                      <span>Моя роль</span>
+                      <p>{project.role}</p>
+                    </div>
+                  )}
+
+                  {project.responsibilities && (
+                    <div className="project-modal__detail">
+                      <span>Обязанности</span>
+                      <p>{project.responsibilities}</p>
+                    </div>
+                  )}
+
+                  {project.platforms && (
+                    <div className="project-modal__detail">
+                      <span>Платформы</span>
+                      <p>{project.platforms}</p>
+                    </div>
+                  )}
+                </div>
+
+                {project.sections?.length > 0 && (
+                  <div className="project-modal__body">
+                    {project.sections.map(renderSection)}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
