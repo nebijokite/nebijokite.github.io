@@ -6,24 +6,32 @@ function PasswordGate({ project, onSuccess }) {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    if (isSubmitting) return;
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    setIsSubmitting(true);
+  if (isSubmitting) return;
 
-    if (password === project.password) {
-      setError("");
-      onSuccess();
-      setIsSubmitting(false);
+  setIsSubmitting(true);
+  setError("");
+
+  try {
+    if (password !== project.password) {
+      setError("Пароль не подошёл. Попробуйте ещё раз.");
+      setPassword("");
       return;
     }
 
-    setError("Пароль не подошёл. Попробуйте ещё раз.");
-    setPassword("");
+    onSuccess();
+  } catch (error) {
+    console.error("Ошибка открытия проекта:", error);
+    setError("Не удалось открыть проект.");
+  } finally {
     setIsSubmitting(false);
-  };
+  }
+};
+
+
 
   return (
     <div className="password-gate">
