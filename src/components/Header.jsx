@@ -15,16 +15,22 @@ function Header() {
     };
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
+ 
+const scrollToSection = (id) => {
+  if (window.location.pathname.replace(/\/$/, "") === "/projects") {
+    sessionStorage.setItem("scrollTarget", id);
+    window.history.pushState({}, "", "/");
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    return;
+  }
 
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  };
+  document.getElementById(id)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+
+
 
   const goToProjects = () => {
     window.history.pushState({}, "", "/projects");

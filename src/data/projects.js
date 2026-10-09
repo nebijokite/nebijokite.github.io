@@ -164,8 +164,8 @@ export const projects = [
     image: "/images/project-03.jpg",
 
     featured: false,
-    protected: false,
-    password: null,
+    protected: true,
+    password: "demo",
 
     status: "По запросу",
     statusType: "request",
