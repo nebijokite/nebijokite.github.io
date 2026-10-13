@@ -1,24 +1,24 @@
 export const projects = [
   {
     id: "project-01",
-    title: "Проект 01",
+    title: "MOVIENOTE",
     category: "Product Design",
     type: "UX / UI",
     year: "2026",
 
-    image: "/images/project-01.jpg",
+    image: "/images/projects/movienote/movienote.jpg",
 
     featured: true,
     protected: false,
     password: null,
 
-    status: "Можно посмотреть",
-    statusType: "available",
+    status: "В разработке",
+    statusType: "development",
 
     description:
       "Исследование, структура и дизайн цифрового продукта от задачи до готового интерфейса.",
 
-    tags: ["Product Design", "UX/UI", "Research", "Strategy"],
+    tags: ["Product Design", "UX/UI", "Research"],
 
     about:
       "Цифровой продукт, в котором я отвечал за исследование пользовательского сценария, структуру продукта и визуальное решение интерфейса.",
@@ -28,7 +28,7 @@ export const projects = [
     responsibilities:
       "Исследование, UX, UI, прототипирование, работа с гипотезами и визуальной системой.",
 
-    platforms: "Web",
+    platforms: "App",
 
     sections: [
       {
