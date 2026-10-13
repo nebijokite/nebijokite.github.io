@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const images = [
-  "/images/me.jpeg",
-  "/images/about-2.jpeg",
-  "/images/about-3.jpeg",
-  "/images/about-4.jpeg",
-  "/images/about-5.jpeg",
-  "/images/about-6.jpeg"
+  "/images/me/1.jpg",
+  "/images/me/2.jpg",
+  "/images/me/3.jpg",
+  "/images/me/4.jpg",
+  "/images/me/5.jpg",
+  "/images/me/6.jpg"
 ];
 
 function AboutSlider() {
