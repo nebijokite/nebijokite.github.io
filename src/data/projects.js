@@ -131,7 +131,7 @@ export const projects = [
     title: "ПиццаФабрика",
     category: "Product Design",
     type: "UX / UI",
-    title: "ПиццаФабрика233",
+    title: "ПиццаФабрика2333",
     category: "Категория",
     type: "Web",
     year: "2026",
