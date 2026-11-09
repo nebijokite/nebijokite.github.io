@@ -8,13 +8,17 @@ function Block({ block }) {
     case "heading": return <h3 className="pm__h">{block.text}</h3>;
     case "text": return <p className="pm__p">{block.text}</p>;
     case "list": return <ul className="pm__ul">{block.items.map((t, i) => <li key={i}>{t}</li>)}</ul>;
-    case "image":
-      return (
-        <figure className="pm__fig">
-          {block.src ? <img src={block.src} alt={block.alt || ""} loading="lazy" /> : <div className="pm__ph">Изображение</div>}
-          {block.caption && <figcaption>{block.caption}</figcaption>}
+    case "images":
+  return (
+    <div className="pm__gallery">
+      {block.items.map((it, i) => (
+        <figure className="pm__fig" key={i}>
+          <img src={it.src} alt={it.alt || ""} loading="lazy" />
+          {it.caption && <figcaption>{it.caption}</figcaption>}
         </figure>
-      );
+      ))}
+    </div>
+  );
     default: return null;
   }
 }
