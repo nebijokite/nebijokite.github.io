@@ -116,7 +116,7 @@ export const projects = [
 
   {
     id: "project-02",
-    title: "ПиццаФабрика",
+    title: "ПиццаФабрик1а",
     category: "Product Design",
     type: "UX / UI",
     year: "2026",
