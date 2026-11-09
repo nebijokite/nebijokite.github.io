@@ -9,11 +9,11 @@ const placeholder = "Описание проекта появится здесь
 export const projects = [
   {
     id: "project-01",
-    title: "Название проекта",
+    title: "MOVIENOTE",
     category: "Категория",
-    type: "Web & App",
+    type: "App",
     year: "2026",
-    image: null, // например "/images/projects/project-01.jpg"
+    image: "/images/projects/movienote/movienote.jpg", // например "/images/projects/project-01.jpg"
     featured: true,
     protected: false,
     password: null,
@@ -28,7 +28,7 @@ export const projects = [
   },
   {
     id: "project-02",
-    title: "Закрытый проект",
+    title: "ПиццаФабрика",
     category: "Категория",
     type: "Web",
     year: "2026",
