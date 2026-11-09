@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<<<<<<< HEAD
     <link
   rel="preconnect"
   href="https://fonts.googleapis.com"
@@ -24,6 +25,22 @@
   </head>
   <body>
     <div id="root"></div>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRODUCT DESIGNER</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+  const redirectPath = sessionStorage.getItem("redirectPath");
+
+  if (redirectPath) {
+    sessionStorage.removeItem("redirectPath");
+    window.history.replaceState(null, "", redirectPath);
+  }
+</script>
+
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

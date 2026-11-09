@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
@@ -29,3 +30,35 @@ export default function App() {
     </BrowserRouter>
   );
 }
+=======
+import { useEffect, useState } from "react";
+
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+
+function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
+  if (path === "/projects") {
+    return <Projects />;
+  }
+
+  return <Home />;
+}
+
+
+
+export default App;
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "desport",
+=======
+  "name": "designport",
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@tailwindcss/vite": "^4.3.3",
     "framer-motion": "^14.0.0",
     "lucide-react": "^1.53.0",
@@ -17,6 +22,10 @@
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.4",
     "tailwindcss": "^4.3.3"
+=======
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -27,6 +36,10 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
+<<<<<<< HEAD
+=======
+    "vercel": "^63.1.0",
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884
     "vite": "^8.3.0"
   }
 }
