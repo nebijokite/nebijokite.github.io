@@ -35,7 +35,7 @@ export const projects = [
     image: null,
     featured: true,
     protected: true,
-    password: "demo", // ВРЕМЕННО. См. комментарий в PasswordGate.jsx
+    password: "demo1", // ВРЕМЕННО. См. комментарий в PasswordGate.jsx
     description: placeholder,
     sections: [
       { type: "heading", text: "Процесс" },
