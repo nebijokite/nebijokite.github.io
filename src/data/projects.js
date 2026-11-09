@@ -28,7 +28,7 @@ export const projects = [
   },
   {
     id: "project-02",
-    title: "ПиццаФабрика",
+    title: "ПиццаФабрика2",
     category: "Категория",
     type: "Web",
     year: "2026",
