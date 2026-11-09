@@ -1,6 +1,117 @@
+@font-face{font-family:"TT Norms Pro";src:url("public/fonts/TTNormsPro-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"TT Norms Pro";src:url("public/fonts/TTNormsPro-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"TT Norms Pro";src:url("public/fonts/TTNormsPro-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"TT Norms Pro";src:url("public/fonts/TTNormsPro-ExtraBold.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+
+:root{--white:#F5F5F3;--graphite:#171717;--cobalt:#2857D9;--pad:clamp(20px,4vw,56px);--hero-size:clamp(5.5rem,29vw,31rem);--hero-gap:-0.07em}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"TT Norms Pro",system-ui,sans-serif;font-weight:400;background:var(--white);color:var(--graphite);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+[data-theme="dark"] :focus-visible,.pm :focus-visible{outline-color:var(--cobalt)}
+.works :focus-visible,.footer :focus-visible,.header--dark :focus-visible{outline-color:var(--white)}
+.pm :focus-visible{outline-color:var(--cobalt)}
+.wrap{padding-inline:var(--pad);max-width:1600px;margin-inline:auto}
+
+/* header */
+.header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);font-weight:500;font-size:.95rem;transition:color .3s}
+.header--light{color:var(--graphite)}.header--dark{color:var(--white)}
+.header__nav{display:flex;gap:clamp(14px,3vw,36px)}
+.header a{transition:color .2s}
+.header a:hover{color:var(--cobalt)}
+.header--dark a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.header__all{white-space:nowrap}
+
+/* hero */
+.hero{min-height:100svh;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.hero__title{font-weight:inherit;padding-bottom:clamp(56px,9vh,96px);overflow:visible}
+.hero__mask{display:block;overflow:hidden;padding-top:.04em}
+.hero__hello,.hero__me{display:block;font-size:var(--hero-size);line-height:.82;letter-spacing:-.045em;white-space:nowrap}
+.hero__hello{font-weight:800}
+.hero__mask--me{margin-top:var(--hero-gap);padding-left:.28em;position:relative}
+.hero__me{font-weight:700;color:var(--cobalt)}
+.hero__meta{position:absolute;left:var(--pad);right:var(--pad);bottom:24px;display:flex;justify-content:space-between;font-weight:500;font-size:.95rem}
+
+/* works */
+.works{background:var(--graphite);color:var(--white);padding:clamp(72px,12vw,160px) 0}
+.works__top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:clamp(40px,6vw,88px);gap:20px}
+.works__title{font-weight:800;font-size:clamp(2.6rem,8vw,7rem);letter-spacing:-.04em;line-height:1}
+.works__all{font-weight:500;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .2s}
+.works__all:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.works__grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(16px,2vw,32px);row-gap:clamp(48px,7vw,104px)}
+.works__item--a{grid-column:1 / span 7}
+.works__item--b{grid-column:8 / span 5;margin-top:clamp(0px,12vw,180px)}
+.card{display:block;width:100%;text-align:left}
+.card__media{display:block;overflow:hidden;border-radius:20px;background:#222;aspect-ratio:4/3}
+.card--b .card__media{aspect-ratio:4/5}
+.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card__ph{display:grid;place-items:center;height:100%;color:#777;font-weight:500;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card__media img,.card:hover .card__ph,.card:focus-visible .card__ph{transform:scale(1.04)}
+.card__info{display:block;margin-top:18px}
+.card__title{display:block;font-weight:700;font-size:clamp(1.3rem,2.4vw,2rem);letter-spacing:-.02em;transition:color .2s}
+.card:hover .card__title{color:var(--cobalt)}
+.card__meta{display:block;margin-top:6px;font-weight:400;font-size:.95rem;color:#9a9a96}
+
+/* about */
+.about{background:var(--white);padding:clamp(72px,12vw,160px) var(--pad);text-align:center}
+.about__title{font-weight:800;font-size:clamp(2.6rem,8vw,7rem);letter-spacing:-.04em;line-height:1;margin-bottom:clamp(32px,5vw,64px)}
+.about__stage{display:flex;align-items:center;justify-content:center;gap:clamp(8px,3vw,40px)}
+.about__frame{position:relative;width:min(100%,460px);aspect-ratio:4/5;overflow:hidden;border-radius:20px;background:#e8e8e5;touch-action:pan-y}
+.about__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none}
+.about__arrow{flex:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--graphite);font-size:1.3rem;line-height:1;transition:background .2s,color .2s,border-color .2s}
+.about__arrow:hover{background:var(--cobalt);border-color:var(--cobalt);color:var(--white)}
+.about__arrow:active{transform:scale(.94)}
+.about__count{margin-top:24px;font-weight:500;font-variant-numeric:tabular-nums}
+
+/* footer */
+.footer{background:var(--graphite);color:var(--white);padding:28px 0 32px;border-top:1px solid #2a2a2a}
+.footer__row{display:flex;flex-wrap:wrap;gap:12px clamp(20px,4vw,48px);font-weight:500;font-size:.95rem}
+.footer a{transition:color .2s}.footer a:hover{color:var(--cobalt)}
+.archive .works{padding-top:clamp(110px,14vw,180px);min-height:100svh}
+
+/* modal */
+.pm{position:fixed;inset:0;z-index:100;background:rgba(23,23,23,.65);display:flex;align-items:flex-end;justify-content:center;padding-top:4vh}
+.pm__sheet{position:relative;background:var(--white);color:var(--graphite);width:min(1100px,100%);height:96vh;height:96dvh;overflow-y:auto;border-radius:24px 24px 0 0;padding:clamp(24px,5vw,64px);overscroll-behavior:contain}
+.pm__close{position:sticky;top:0;float:right;z-index:2;width:44px;height:44px;border-radius:50%;background:var(--graphite);color:var(--white);transition:background .2s}
+.pm__close:hover{background:var(--cobalt)}
+.pm__meta{font-weight:500;color:#77776f;font-size:.95rem}
+.pm__title{font-weight:800;font-size:clamp(2rem,6vw,4.5rem);letter-spacing:-.035em;line-height:1.02;margin:10px 0 clamp(24px,4vw,48px)}
+.pm__cover,.pm__fig img,.pm__ph{border-radius:16px;overflow:hidden}
+.pm__cover img{width:100%}
+.pm__ph{display:grid;place-items:center;aspect-ratio:16/10;background:#e8e8e5;color:#8a8a84;font-weight:500}
+.pm__lead{font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.4;margin:clamp(24px,4vw,48px) 0;max-width:46ch}
+.pm__h{font-weight:700;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:-.02em;margin:clamp(32px,5vw,64px) 0 14px}
+.pm__p,.pm__ul{line-height:1.55;max-width:60ch;font-size:1.05rem}
+.pm__ul{padding-left:1.2em}
+.pm__fig{margin:clamp(24px,4vw,48px) 0}.pm__fig figcaption{margin-top:10px;font-size:.9rem;color:#77776f}
+.gate{max-width:360px;margin-top:8px;display:flex;flex-direction:column;gap:12px}
+.gate__title{font-weight:700;font-size:1.6rem;letter-spacing:-.02em}
+.gate__text{color:#5c5c57}
+.gate__input{font:inherit;padding:14px 16px;border:1px solid var(--graphite);border-radius:12px;background:transparent}
+.gate__input[aria-invalid="true"]{border-color:var(--cobalt);box-shadow:0 0 0 1px var(--cobalt)}
+.gate__btn{padding:14px 16px;border-radius:12px;background:var(--cobalt);color:var(--white);font-weight:500;transition:opacity .2s}
+.gate__btn:hover{opacity:.9}.gate__btn:disabled{opacity:.5;cursor:default}
+.gate__error{color:var(--cobalt);font-weight:500}
+
+@media (max-width:760px){
+  .works__item--a,.works__item--b{grid-column:1 / -1;margin-top:0}
+  .card--b .card__media{aspect-ratio:4/3}
+  .hero__mask--me{padding-left:.18em}
+  .header{font-size:.85rem;padding:16px var(--pad)}
+  .header__nav{gap:12px}
+  .about__stage{gap:6px}.about__arrow{width:40px;height:40px}
+  .about__frame{width:min(100%,calc(100vw - 2*var(--pad) - 92px))}
+  .pm{padding-top:0}.pm__sheet{height:100dvh;border-radius:0}
+}
+@media (max-width:420px){.header__all{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;scroll-behavior:auto!important}}
 @font-face {
   font-family: "TT Norms Pro";
-  src: url("../fonts/TTNormsPro-Regular.woff2") format("woff2");
+  src: url("/fonts/TTNormsPro-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +119,7 @@
 
 @font-face {
   font-family: "TT Norms Pro";
-  src: url("../fonts/TTNormsPro-Medium.woff2") format("woff2");
+  src: url("/fonts/TTNormsPro-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -16,7 +127,7 @@
 
 @font-face {
   font-family: "TT Norms Pro";
-  src: url("../fonts/TTNormsPro-Bold.woff2") format("woff2");
+  src: url("/fonts/TTNormsPro-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -24,7 +135,7 @@
 
 @font-face {
   font-family: "TT Norms Pro";
-  src: url("../fonts/TTNormsPro-ExtraBold.woff2") format("woff2");
+  src: url("/fonts/TTNormsPro-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -1086,6 +1197,7 @@ img {
 }
 
 
+
 /* =========================================
    PASSWORD GATE
 ========================================= */
@@ -1312,6 +1424,8 @@ img {
 }
 
 
+
+
 /* =========================================
    ARCHIVE
 ========================================= */
@@ -1362,7 +1476,8 @@ input:focus-visible {
 
 
 /* =========================================
-   TABLET 901–1200
+   TABLET
+   901px — 1200px
 ========================================= */
 
 @media (max-width: 1200px) {
@@ -1384,7 +1499,8 @@ input:focus-visible {
 
 
 /* =========================================
-   TABLET 641–900
+   TABLET
+   641px — 900px
 ========================================= */
 
 @media (max-width: 900px) {
@@ -1393,6 +1509,8 @@ input:focus-visible {
     --page-padding: 24px;
   }
 
+  /* Header */
+
   .header {
     top: 12px;
   }
@@ -1400,6 +1518,8 @@ input:focus-visible {
   .header__nav {
     gap: 18px;
   }
+
+  /* Hero */
 
   .hero {
     min-height: 100svh;
@@ -1475,6 +1595,8 @@ input:focus-visible {
     z-index: 5;
   }
 
+  /* Projects */
+
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
@@ -1503,6 +1625,8 @@ input:focus-visible {
     font-size: 12px;
   }
 
+  /* About */
+
   .about-slider {
     grid-template-columns: 40px minmax(0, 360px) 40px;
     column-gap: 8px;
@@ -1518,7 +1642,8 @@ input:focus-visible {
 
 
 /* =========================================
-   MOBILE 0–640
+   MOBILE
+   0 — 640px
 ========================================= */
 
 @media (max-width: 640px) {
@@ -1528,7 +1653,9 @@ input:focus-visible {
   }
 
 
-  /* Header */
+  /* -----------------------------------------
+     HEADER
+  ----------------------------------------- */
 
   .header {
     top: 10px;
@@ -1572,7 +1699,9 @@ input:focus-visible {
   }
 
 
-  /* Hero */
+  /* -----------------------------------------
+     HERO
+  ----------------------------------------- */
 
   .hero {
     min-height: 100svh;
@@ -1630,6 +1759,13 @@ input:focus-visible {
     line-height: 1.35;
   }
 
+  /*
+    Карточка больше не участвует
+    в обычном потоке страницы.
+    Она занимает своё место
+    в нижней части Hero.
+  */
+
   .hero__card {
     position: absolute;
 
@@ -1663,7 +1799,9 @@ input:focus-visible {
   }
 
 
-  /* Works */
+  /* -----------------------------------------
+     WORKS
+  ----------------------------------------- */
 
   .works {
     padding: 60px 0 42px;
@@ -1676,6 +1814,12 @@ input:focus-visible {
   .section-heading h2 {
     font-size: 48px;
   }
+
+  /*
+    На телефоне — строго одна колонка.
+    Ширина карточки = ширина контейнера.
+    Никаких вытянутых вертикальных карточек.
+  */
 
   .projects-grid {
     display: grid;
@@ -1700,6 +1844,10 @@ input:focus-visible {
   .project-card__image-wrap {
     width: 100%;
 
+    /*
+      Почти такой же прямоугольник,
+      как на десктопе.
+    */
     aspect-ratio: 1.45 / 1;
 
     min-height: 0;
@@ -1714,6 +1862,13 @@ input:focus-visible {
   .project-card__info {
     padding: 26px 3px 8px;
   }
+
+  /*
+    Название и статус НЕ пытаемся
+    держать в одной строке.
+    На узком экране статус уходит
+    под название.
+  */
 
   .project-card__title-row {
     display: flex;
@@ -1775,7 +1930,9 @@ input:focus-visible {
   }
 
 
-  /* About */
+  /* -----------------------------------------
+     ABOUT
+  ----------------------------------------- */
 
   .about {
     padding: 60px 0 45px;
@@ -1817,7 +1974,9 @@ input:focus-visible {
   }
 
 
-  /* Footer */
+  /* -----------------------------------------
+     FOOTER
+  ----------------------------------------- */
 
   .footer {
     padding: 28px var(--page-padding) 22px;
@@ -1837,7 +1996,9 @@ input:focus-visible {
   }
 
 
-  /* Modal */
+  /* -----------------------------------------
+     PROJECT MODAL
+  ----------------------------------------- */
 
   .project-modal {
     padding: 0;
@@ -1916,7 +2077,9 @@ input:focus-visible {
   }
 
 
-  /* Password */
+  /* -----------------------------------------
+     PASSWORD
+  ----------------------------------------- */
 
   .password-gate {
     min-height: 100svh;
@@ -1925,7 +2088,9 @@ input:focus-visible {
   }
 
 
-  /* Archive */
+  /* -----------------------------------------
+     ARCHIVE
+  ----------------------------------------- */
 
   .projects-archive {
     padding-top: 140px;
@@ -1938,7 +2103,8 @@ input:focus-visible {
 
 
 /* =========================================
-   SMALL PHONES <= 380
+   SMALL PHONES
+   <= 380px
 ========================================= */
 
 @media (max-width: 380px) {
@@ -1950,6 +2116,9 @@ input:focus-visible {
   .header__nav button {
     font-size: 11px;
   }
+
+
+  /* Hero */
 
   .hero {
     padding-top: 130px;
@@ -1975,6 +2144,9 @@ input:focus-visible {
     bottom: 70px;
   }
 
+
+  /* Projects */
+
   .project-card {
     border-radius: 26px;
   }
@@ -1997,6 +2169,9 @@ input:focus-visible {
     font-size: 23px;
   }
 
+
+  /* About */
+
   .about-slider {
     grid-template-columns:
       28px
@@ -2013,3 +2188,4 @@ input:focus-visible {
     font-size: 13px;
   }
 }
+
