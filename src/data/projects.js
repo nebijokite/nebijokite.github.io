@@ -143,7 +143,7 @@ export const projects = [
     responsibilities:
       "Концепция, UX/UI, структура продукта и прототипирование.",
 
-    platforms: "Web",
+    platforms: "Webb",
 
     sections: [
       {
