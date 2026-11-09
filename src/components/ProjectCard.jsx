@@ -1,4 +1,3 @@
-
 function ProjectCard({ project, onOpen }) {
   const isInDevelopment =
     project.statusType === "development" ||

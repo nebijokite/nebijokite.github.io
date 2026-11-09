@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import Works from "../components/Works";
+import Footer from "../components/Footer";
+import { projects } from "../data/projects";
+
+export default function Projects() {
+  return (
+    <main className="archive">
+      <Works list={projects} heading="Все работы" id="archive" />
+      <Footer />
+    </main>
+  );
+}
+=======
 import { useState } from "react";
 
 import Header from "../components/Header";
@@ -49,3 +63,4 @@ function Projects() {
 }
 
 export default Projects;
+>>>>>>> 67d56fc93b8702593fe1db63d11206050054a884

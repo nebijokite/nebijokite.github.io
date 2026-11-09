@@ -1,17 +1,22 @@
+// Новый проект = новый объект в этом массиве. Карточка появится сама.
+// featured: true  -> показывается на главной (держи 2 штуки)
+// protected: true -> перед кейсом показывается PasswordGate
+// sections: гибкие блоки в любом порядке:
+//   { type: "heading", text }  { type: "text", text }
+//   { type: "list", items: [] }  { type: "image", src, alt, caption }
+const placeholder = "Описание проекта появится здесь";
+
 export const projects = [
   {
     id: "project-01",
     title: "MOVIENOTE",
-    category: "Product Design",
-    type: "UX / UI",
+    category: "Категория",
+    type: "App",
     year: "2026",
-
-    image: "/images/projects/movienote/movienote.jpg",
-
+    image: "/images/projects/movienote/movienote.jpg", // например "/images/projects/project-01.jpg"
     featured: true,
     protected: false,
     password: null,
-
     status: "Можно посмотреть",
     statusType: "available",
 
@@ -111,18 +116,26 @@ export const projects = [
         src: "/images/project-01-05.jpg",
         alt: "Финальный результат"
       }
-    ]
+    ],
+    description: placeholder,
+    sections: [
+      { type: "heading", text: "Задача" },
+      { type: "text", text: placeholder },
+      { type: "image", src: null, alt: "Изображение проекта", caption: "Подпись" },
+      { type: "heading", text: "Решение" },
+      { type: "text", text: placeholder },
+    ],
   },
-
   {
     id: "project-02",
-    title: "ПиццаФабрик1а",
+    title: "ПиццаФабрика",
     category: "Product Design",
     type: "UX / UI",
+    title: "ПиццаФабрика233",
+    category: "Категория",
+    type: "Web",
     year: "2026",
-
-    image: "/images/project-02.jpg",
-
+    image: null,
     featured: true,
     protected: false,
     password: null,
@@ -143,94 +156,27 @@ export const projects = [
     responsibilities:
       "Концепция, UX/UI, структура продукта и прототипирование.",
 
-    platforms: "Webb",
-
+    platforms: "Web",
+    protected: true,
+    password: "demo", // ВРЕМЕННО. См. комментарий в PasswordGate.jsx
+    description: placeholder,
     sections: [
-      {
-        type: "text",
-        title: "Задача",
-        content:
-          "Описание задачи второго проекта."
-      },
-
-      {
-        type: "text",
-        title: "Решение",
-        content:
-          "Описание решения второго проекта."
-      }
-    ]
+      { type: "heading", text: "Процесс" },
+      { type: "text", text: placeholder },
+      { type: "list", items: [placeholder, placeholder] },
+    ],
   },
-
   {
     id: "project-03",
-    title: "Проект 03",
-    category: "Product Design",
-    type: "UX / UI",
-    year: "2026",
-
-    image: "/images/project-03.jpg",
-
+    title: "Название проекта",
+    category: "Категория",
+    type: "App",
+    year: "2025",
+    image: null,
     featured: false,
-    protected: true,
-    password: "demo",
-
-    status: "По запросу",
-    statusType: "request",
-
-    description:
-      "Проект доступен для просмотра по запросу.",
-
-    tags: ["Product Design", "UX/UI", "Research", "Prototype"],
-
-    about:
-      "Проект доступен для просмотра по запросу.",
-
-    role: "Product Designer",
-
-    responsibilities:
-      "Исследование, UX/UI и прототипирование.",
-
-    platforms: "Web",
-
-    sections: []
+    protected: false,
+    password: null,
+    description: placeholder,
+    sections: [{ type: "text", text: placeholder }],
   },
-
-  {
-    id: "project-04",
-    title: "Проект 04",
-    category: "Product Design",
-    type: "UX / UI",
-    year: "2026",
-
-    image: "/images/project-04.jpg",
-
-    featured: false,
-    protected: true,
-    password: "demo",
-
-    status: "По запросу",
-    statusType: "request",
-
-    description:
-      "Закрытый проект с ограниченным доступом к материалам и процессу работы.",
-
-    tags: ["Product Design", "UX/UI", "Strategy", "Prototype"],
-
-    about:
-      "Закрытый проект.",
-
-    role: "Product Designer",
-
-    responsibilities:
-      "Стратегия, UX/UI и прототипирование.",
-
-    platforms: "Web",
-
-    sections: []
-  }
 ];
-
-export const featuredProjects = projects.filter(
-  (project) => project.featured
-);
